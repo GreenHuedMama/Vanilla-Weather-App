@@ -9,3 +9,11 @@ li:first letter {
 #temp {
   font-size: 24px;
 }
+
+.weather-temperature .active {
+  color: black;
+}
+
+.weather-temperature .active:hover {
+  text-decoration: none;
+}
