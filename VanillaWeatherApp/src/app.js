@@ -44,15 +44,21 @@ function displayForecast(response) {
       <div class="col-2">
         <div class="weather-forecast-day">${formatDay(forecastDay.dt)}</div>
         <img
-          src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
+          src="http://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png"
           alt=""
         />
         <div class="weather-forecast-temps">
-          <span class="weather-forecast-max"> ${Math.round(forecastDay.temp.max)}° </span>
-          <span class="weather-forecast-min"> ${Math.round(forecastDay.temp.min)}° </span>
+          <span class="weather-forecast-max"> ${Math.round(
+            forecastDay.temp.max
+          )}° </span> |
+          <span class="weather-forecast-min"> ${Math.round(
+            forecastDay.temp.min
+          )}° </span>
         </div>
       </div>
-    `
+    `;
     }
   });
 
@@ -63,7 +69,7 @@ function displayForecast(response) {
 function getForecast(coordinates) {
   console.log(coordinates);
   let apiKey = "59ee4591990d1ea0e068edfbc69866c6";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayForecast);
 }
   
@@ -95,7 +101,7 @@ function displayTemperature(response) {
 
 function search(city) {
   let apiKey = "59ee4591990d1ea0e068edfbc69866c6";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayTemperature);
 }
 
@@ -108,29 +114,19 @@ function handleSubmit(event) {
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
-function showFahrenheit(event) {
-  event.preventDefault();
-  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let temperatureElement = document.querySelector("#temp");
-  temperatureElement.innerHTML = Math.round(fahrenheitTemp);
-}
-
-function showCelsius(event) {
-  event.preventDefault();
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  let temperatureElement = document.querySelector("#temp");
-  temperatureElement.innerHTML = Math.round(celsiusTemp);
-}
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", showFahrenheit);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", showCelsius);
-
-let celsiusTemp = null;
-
 search("Miami");
+
+function searchLocation(position) {
+  let apiKey = "59ee4591990d1ea0e068edfbc69866c6";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=imperial`;
+
+  axios.get(apiUrl).then(displayWeatherCondition);
+}
+
+function getCurrentLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(searchLocation);
+}
+
+let currentLocationButton = document.querySelector("#current-location-button");
+currentLocationButton.addEventListener("click", getCurrentLocation);

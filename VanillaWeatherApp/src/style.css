@@ -1,28 +1,47 @@
 body {
-  background: radial-gradient(
-    circle at 10% 20%,
-    rgb(255, 252, 214) 0%,
-    rgba(255, 102, 102, 0.44) 90%
+  background: linear-gradient(
+    179.4deg,
+    rgb(12, 20, 69) -16.9%,
+    rgb(71, 30, 84) 119.9%
   );
   font-family: "Indie Flower";
 }
 
 .btn {
-  background: #430f58;
+  background: #f70776;
+  border: 1px solid #680747;
+  border-radius: 12px;
   color: white;
+  float: left;
+  font-size: 16px;
+  padding: 10px 24px;
+  width: 100px;
+}
+
+.btn:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card {
+  margin: 0 auto;
+}
+
+footer {
+  padding: 30px;
 }
 
 h1 {
-  color: #c50d66;
-  font-size: 24px;
+  color: #680747;
+  font-size: 40px;
   font-weight: 400;
   line-height: 28px;
   margin-bottom: 0;
 }
 
 li {
-  color: ;
-  font-size: 16px;
+  color: #c3195d;
+  font-size: 20px;
   font-weight: 250;
   line-height: 19px;
   list-style: none;
@@ -39,7 +58,7 @@ li:first letter {
 }
 
 #temp {
-  font-size: 24px;
+  font-size: 32px;
 }
 
 ul {
@@ -48,12 +67,13 @@ ul {
 }
 
 .weather-app-wrapper {
-  border: 1px solid;
+  background: linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114));
+  border: 1px solid #c3195d;
   border-radius: 25px;
-  color: #ff0000;
-  height: 700px;
+  color: #05004e;
+  height: 600px;
   margin: 30px auto;
-  max-width: 500px;
+  max-width: 700px;
   padding: 20px;
 }
 
@@ -63,16 +83,17 @@ ul {
 }
 
 .weather-forecast-day {
-  font-size: 16px;
+  font-size: 24px;
   opacity: 0.5;
 }
 
 .weather-forecast-min {
+  font-size: 20px;
   opacity: 0.5;
 }
 
 .weather-forecast-temps {
-  font-size: 13px;
+  font-size: 20px;
 }
 
 .weather-temperature .active {
@@ -90,7 +111,7 @@ ul {
 }
 
 .weather-temperature strong {
-  color: #c50d66;
+  color: #680747;
   font-size: 64px;
   font-weight: 400;
   line-height: 1;

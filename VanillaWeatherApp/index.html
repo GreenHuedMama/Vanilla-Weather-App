@@ -20,7 +20,7 @@
         <div class="weather-app">
           <form id="search-form" class="mb-5">
             <div class="row">
-              <div class="col-7">
+              <div class="col-6">
                 <input
                   type="search"
                   placeholder="Enter a city"
@@ -29,8 +29,15 @@
                   autocomplete="off"
                 />
               </div>
-              <div class="col-5">
-                <input type="submit" value="🔎" class="btn w-85" />
+              <div class="col-3">
+                <input type="submit" value="🔎" class="btn" />
+              </div>
+              <div class="col-3">
+              <button
+                class="btn"
+                id="current-location-button"
+              >Current
+              </button>
               </div>
             </div>
           </form>
@@ -47,10 +54,7 @@
                 <img src="" alt="Partly Cloudy" id="icon" class="float-left" />
                 <div class="float-left">
                   <strong id="temp"></strong>
-                  <span class="units">
-                    <a href="#" id="celsius-link" class="active">°C</a> |
-                    <a href="#" id="fahrenheit-link">°F</a>
-                  </span>
+                  <span class="units">°F</span>
                 </div>
               </div>
             </div>
@@ -61,7 +65,7 @@
               </ul>
             </div>
             <div class="weather-forecast" id="future-forecast">
-            </div>
+          </div>
           </div>
         </div>
         <footer>
@@ -75,5 +79,6 @@
       </div>
     </div>
     <script src="src/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.js"></script>
   </body>
 </html>
